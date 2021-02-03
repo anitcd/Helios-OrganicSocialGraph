@@ -36,9 +36,8 @@ we designed an approach with following requeriments:
 
 <img src="./doc/architecture.png">
 
-## Android module architecture
 
-### Module functionalities
+### Android module functionalities
 
 ●	Checking location and Bluetooth permissions on mobile device
 
