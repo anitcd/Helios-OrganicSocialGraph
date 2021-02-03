@@ -50,7 +50,7 @@ we designed an approach with following requeriments:
 
 ●	Call to Social Ego Network manager to create a new Helios Context
 
-### 3.3	Raspberry device functionalities
+### Raspberry device functionalities
 
 ●	Python script running a RFCOMM server 
 
@@ -58,7 +58,7 @@ we designed an approach with following requeriments:
 
 ●	Implementation using Python classes:
 
-▪	RPi
-▪	bluetooth
-▪	pybluez
+        RPi
+        bluetooth
+        pybluez
 
