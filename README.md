@@ -61,6 +61,7 @@ we designed an approach with following requeriments:
         bluetooth
         pybluez
 
+
 ## Cloning this branch of the module
 
 ```
@@ -69,27 +70,28 @@ git clone --single-branch --branch Bluetooth_Smart_Environments https://scm.atos
 
 ## Integration of the module in the app
 
-        Open your app in Android Studio.
+Open your app in Android Studio.
         
-        File > New > Import Module
+    File > New > Import Module
 
-        Go to <i>smartenvironment</i> folder. 
+Go to smartenvironment folder. 
         
-        Select <b>smartenvironments</b> folder like source directory. 
+Select smartenvironments folder like source directory. 
         
-        Click <b>Finish</b> to import.
+Click Finish to import.
 
-        New module should appears in first line of <b>settings.gradle</b> file:
+New module should appears in first line of settings.gradle file:
 
         ```
         include ':app', ':smartenvironments'
         ```
 
-        Open <b>build.gradle</b> file of app module. In <b>dependencies</b> section add:
+Open build.gradle file of app module. In dependencies section add:
 
         ```
         implementation project(":smartenvironments")
         ```
+
 
 ## Integration of the module using Nexus Helios repository
 
