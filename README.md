@@ -82,15 +82,11 @@ Click Finish to import.
 
 New module should appears in first line of settings.gradle file:
 
-        ```
         include ':app', ':smartenvironments'
-        ```
 
 Open build.gradle file of app module. In dependencies section add:
 
-        ```
         implementation project(":smartenvironments")
-        ```
 
 
 ## Integration of the module using Nexus Helios repository
