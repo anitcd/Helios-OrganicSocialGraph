@@ -159,7 +159,7 @@ If the user chooses to pair, the device will get paired with the other device. I
 
 Clicking on the 'Yes' button starts the scanning process again.
 
-Note that once a connection is established, the information about the device is stored and managed by making use of the [Contextual Ego Network (CEN)](https://scm.atosresearch.eu/ari/helios_group/socialegonetwork) library. In particular, a Contextual Ego Network instance for an ego node with a CEN-specific local identifier say `user_00001` is created as follows:
+Note that once a connection is established, the information about the device is stored and managed by making use of the [Contextual Ego Network (CEN)](https://github.com/helios-h2020/h.core-SocialEgoNetwork) library. In particular, a Contextual Ego Network instance for an ego node with a CEN-specific local identifier say `user_00001` is created as follows:
 
 ```java
 ContextualEgoNetwork cen = ContextualEgoNetwork.createOrLoad("", "user_00001", null);
