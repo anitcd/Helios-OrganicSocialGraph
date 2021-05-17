@@ -4,7 +4,8 @@ An important use case of the [Helios](https://helios-h2020.eu/) project is makin
 
 This Android project implements the concept of an organic social graph based on mobile phone sensors. In particular we make use of Bluetooth to find all the Bluetooth devices in close proximity.
 
-![plot](./img/bluetoothProximity.png)
+<!-- ![plot](./img/bluetoothProximity.png) -->
+![plot](https://raw.githubusercontent.com/helios-h2020/h.extension-HeliosSmartEnvironments-OrganicSocialGraph/master/img/bluetoothProximity.png)
 
 The app installed in a mobile device keeps track of all nearby Bluetooth devices. The app automatically sends a connection request to another mobile device if they frequently appear in each other's close proximity. Once the connection request is accepted, two users become friends and they make a social graph of two nodes. We call this an organic social graph, which keeps expanding over time.
 
@@ -16,7 +17,7 @@ This project can be used either as a stand-alone application (APK) or as a libra
 
 To listen to the Bluetooth turning on/off we have a broadcast receiver called `bluetoothStateBroadcastReceiver`.
 
-```
+```java
 private final BroadcastReceiver bluetoothStateBroadcastReceiver = new BroadcastReceiver() {
    public void onReceive(Context context, Intent intent) {
        String action = intent.getAction();
@@ -42,7 +43,7 @@ private final BroadcastReceiver bluetoothStateBroadcastReceiver = new BroadcastR
 
 On getting `BluetoothAdapter.STATE_ON`, `startRepeatingTask()` is called, which eventually calls a thread to start the scanning for every 15 minutes by calling discoverUnpairedDevices broadcast receiver and prints the result of the scanning in the listview.
 
-```
+```java
 public final BroadcastReceiver discoverUnpairedDevices = new BroadcastReceiver() {
    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
    public void onReceive(Context context, Intent intent) {
@@ -70,7 +71,7 @@ While scanning a Bluetooth device, four values from the device are received whic
 
 For copying the data, the method `WriteBtn(bluetoothDevice.getAddress(), rssi, currentDateTime, frequncy)` is called.
 
-```
+```java
 @RequiresApi(api = Build.VERSION_CODES.KITKAT)
 public void WriteBtn(String address, int rssi, String currentDateTime, int frequncy,String addressValue) {
    try {
@@ -100,7 +101,7 @@ public void WriteBtn(String address, int rssi, String currentDateTime, int frequ
 
 To make the device discoverable, a different broadcast receiver `bluetoothDiscoverableBroadcastReceiver` is used. It makes the device's Bluetooth discoverable for 300 seconds for other devices to pair with the device.
 
-```
+```java
 private final BroadcastReceiver bluetoothDiscoverableBroadcastReceiver = new BroadcastReceiver() {
    public void onReceive(Context context, Intent intent) {
        String action = intent.getAction();
@@ -128,7 +129,7 @@ private final BroadcastReceiver bluetoothDiscoverableBroadcastReceiver = new Bro
 
 A smart pairing option is installed to keep track of the number of times a device is in close proximity. For this a collection class is used which increments the variable `frequncy` if it was previously scanned and available in the list.
 
-```
+```java
 if(mBTDevices.contains(bluetoothDevice) && maddressValue.contains(addressValue)) {
    frequncy= Collections.frequency(mBTDevices, bluetoothDevice);
 
@@ -153,13 +154,14 @@ After getting the connection state of the device, we initiate the pairing by cal
 
 If the user chooses to pair, the device will get paired with the other device. In either case a dialog box asks if the device should scan again.
 
-![plot](./img/bluetoothPairing.png)
+<!-- ![plot](./img/bluetoothPairing.png) -->
+![plot](https://raw.githubusercontent.com/helios-h2020/h.extension-HeliosSmartEnvironments-OrganicSocialGraph/master/img/bluetoothPairing.png)
 
 Clicking on the 'Yes' button starts the scanning process again.
 
 Note that once a connection is established, the information about the device is stored and managed by making use of the [Contextual Ego Network (CEN)](https://scm.atosresearch.eu/ari/helios_group/socialegonetwork) library. In particular, a Contextual Ego Network instance for an ego node with a CEN-specific local identifier say `user_00001` is created as follows:
 
-```
+```java
 ContextualEgoNetwork cen = ContextualEgoNetwork.createOrLoad("", "user_00001", null);
 Node user1 = cen.getEgo();
 ```
@@ -169,7 +171,7 @@ Node user1 = cen.getEgo();
 Device sensor scanning is used for the in-built sensors of the device such as accelerometer, gyrometer, gravity, temperature, magnetometer, barometer and light. To scan such sensors the sensor data is imported via the `SensorManager` class which provides sensors' data directly from the Android device.
 
 
-```
+```java
 SensorManager sensorManager;
 sensorManager=(SensorManager) getSystemService(Context.SENSOR_SERVICE);
 assert sensorManager != null;
@@ -187,7 +189,7 @@ else {...}
 
 Since the sensors' data (say the rotation) keep updating every moment the phone changes its orientation, for instance, the following method is implemented to capture all the changes that a sensor goes through. It also copies the data in a separate file for each sensor.
 
-```
+```java
 public void onSensorChanged(SensorEvent sensorEvent) {
    Sensor sensor= sensorEvent.sensor;
    @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
